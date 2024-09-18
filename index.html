@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crap Book</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffd6d6; /* Baby pink background color */
+            padding: 20px;
+            margin: 0;
+            position: relative;
+        }
+
+        .container {
+            padding: 20px;
+            position: relative; /* Ensure relative positioning */
+            z-index: 1; /* Ensure the cover image and content are above the heart animation */
+        }
+
+        .cover-image {
+            width: 100%; /* Full width */
+            max-width: 800px; /* Max width */
+            margin: 20px auto; /* Center horizontally */
+            cursor: pointer; /* Change cursor to pointer when hovering over the cover image */
+            transition: opacity 0.5s; /* Add transition effect */
+        }
+
+        .cover-image.hidden {
+            opacity: 0; /* Hide the cover image */
+        }
+
+        .content {
+            display: none; /* Initially hide the content */
+        }
+
+        .content.show {
+            display: block; /* Show the content when the cover image is clicked */
+        }
+
+        .photo-box, .message-box, .heart-container {
+            display: none; /* Initially hide the photo box, message box, and heart container */
+        }
+
+        .photo-box, .message-box {
+            width: 100%; /* Same width as content */
+            max-width: 800px; /* Max width */
+            margin: 20px auto; /* Center horizontally */
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .photo-box img {
+            max-width: 100%; /* Ensure image does not exceed container width */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px;
+        }
+
+        .message-box {
+            margin-bottom: 10px; /* Adjust margin to separate from photo box */
+        }
+
+        .heart-container {
+            position: fixed; /* Fixed position */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Ensure the heart animation is below everything */
+        }
+
+        .heart {
+            font-size: 20px; /* Adjust the size as needed */
+            position: absolute;
+            animation: hearts 10s linear infinite; /* Animation to move hearts */
+        }
+
+        /* Keyframes for heart animation */
+        @keyframes hearts {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cover Image -->
+        <img class="cover-image" src="https://i.imgur.com/52eyNaW_d.jpg?maxwidth=520&shape=thumb&fidelity=high" alt="Cover Image" onclick="revealContent()">
+
+        <!-- Content -->
+        <div class="content" id="content">
+            <!-- Message Box for Boyfriend's Birthday -->
+            <div class="message-box">
+                <h2>Happy Birthday, My Love!MY BESTIII...</h2>
+                <p>Dear Abraaa,</p>
+                <p>I just wanted to take a moment to wish you the happiest of birthdays. You mean the world to me, and I'm so grateful to have you in my life.</p>
+                <p>May this day be filled with joy, laughter, and all the love you deserve.</p>
+                <p>With all my love,</p>
+                <p>dabraaaa</p>
+            </div>
+
+            <!-- Photo Box -->
+            <div class="photo-box">
+                <!-- Add your photo here -->
+               <!-- Photo Box -->
+
+    <img src="https://i.imgur.com/DjkrVZH.png" alt="Your Photo">
+</div>
+
+        </div>
+    </div>
+
+    <!-- Heart Animation Container -->
+    <div class="heart-container">
+        <!-- Background Hearts -->
+        <script>
+            const numHearts = 200; // Number of hearts to generate
+            const container = document.querySelector('.heart-container');
+
+            for (let i = 0; i < numHearts; i++) {
+                const heart = document.createElement('div');
+                heart.textContent = '❤️';
+                heart.classList.add('heart');
+                heart.style.top = `${Math.random() * 100}vh`; // Random vertical position
+                heart.style.left = `${Math.random() * 100}vw`; // Random horizontal position
+                heart.style.animationDelay = `${Math.random() * 10}s`; // Random animation delay
+                container.appendChild(heart);
+            }
+
+            // Function to reveal content
+            function revealContent() {
+                document.getElementById("content").classList.add("show");
+                document.querySelector('.photo-box').style.display = 'block';
+                document.querySelector('.message-box').style.display = 'block';
+                document.querySelector('.heart-container').style.display = 'block';
+                document.querySelector('.cover-image').classList.add('hidden'); // Hide cover image
+            }
+        </script>
+    </div>
+</body>
+</html>
